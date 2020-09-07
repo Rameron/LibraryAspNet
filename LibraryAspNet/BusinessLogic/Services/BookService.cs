@@ -49,10 +49,15 @@ namespace LibraryAspNet.BusinessLogic.Services
             {
                 throw new Exception("Book not found");
             }
-            _libraryContext.Books.Update(updateBook.ToDatabaseModel());
+
+            updatingBook.Title = updateBook.Title;
+            updatingBook.Author = updateBook.Author;
+            updatingBook.Year = updateBook.Year;
+
+            _libraryContext.Books.Update(updatingBook);
             await _libraryContext.SaveChangesAsync();
 
-            return updateBook;
+            return updatingBook.ToBusinessLogicModel();
         }
 
         public async Task<Book> DeleteBookAsync(int bookId)

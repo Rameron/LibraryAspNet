@@ -49,10 +49,14 @@ namespace LibraryAspNet.BusinessLogic.Services
             {
                 throw new Exception("User not found");
             }
-            _libraryContext.Users.Update(updateUser.ToDatabaseModel());
+
+            updatingUser.Name = updateUser.Name;
+            updatingUser.Email = updatingUser.Email;
+
+            _libraryContext.Users.Update(updatingUser);
             await _libraryContext.SaveChangesAsync();
 
-            return updateUser;
+            return updatingUser.ToBusinessLogicModel();
         }
 
         public async Task<User> DeleteUserAsync(int userId)
