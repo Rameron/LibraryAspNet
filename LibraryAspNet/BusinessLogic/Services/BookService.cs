@@ -7,7 +7,7 @@ using LibraryAspNet.BusinessLogic.Models;
 using LibraryAspNet.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryAspNet.BusinessLogic
+namespace LibraryAspNet.BusinessLogic.Services
 {
     public class BookService : IBookService
     {
